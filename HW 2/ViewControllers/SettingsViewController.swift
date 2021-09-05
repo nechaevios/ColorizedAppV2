@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
     
     @IBOutlet weak var colorView: UIView!
-
+    
     @IBOutlet weak var redLabel: UILabel!
     @IBOutlet weak var greenLabel: UILabel!
     @IBOutlet weak var blueLabel: UILabel!
@@ -23,8 +23,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var redTextField: UITextField!
     @IBOutlet weak var greenTextField: UITextField!
     @IBOutlet weak var blueTextField: UITextField!
+    
+    var redSliderEditValue: Float!
+    var greenSliderEditValue: Float!
+    var blueSliderEditValue: Float!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        redSlider.value = redSliderEditValue
+        greenSlider.value = greenSliderEditValue
+        blueSlider.value = blueSliderEditValue
+        
+        addDoneButton(in: redTextField)
+        addDoneButton(in: greenTextField)
+        addDoneButton(in: blueTextField)
         
         colorView.layer.cornerRadius = 15
         
@@ -77,5 +89,59 @@ class ViewController: UIViewController {
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
+    }
+    
+}
+
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == redTextField {
+            redLabel.text = redTextField.text
+            redSlider.value = Float(redTextField.text ?? "") ?? 0.0
+        } else if textField == greenTextField {
+            greenLabel.text = greenTextField.text
+            greenSlider.value = Float(greenTextField.text ?? "") ?? 0.0
+        } else {
+            blueLabel.text = blueTextField.text
+            blueSlider.value = Float(blueTextField.text ?? "") ?? 0.0
+        }
+        
+        setColor()
+        return true
+    }
+}
+
+extension UITextField {
+
+}
+
+extension SettingsViewController {
+    
+    func addDoneButton(in texField: UITextField) {
+        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        
+        keyboardToolbar.sizeToFit()
+        keyboardToolbar.barStyle = .default
+        
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endEdit(sender: )))
+        
+        doneBarButton.tag = texField.tag
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        texField.inputAccessoryView = keyboardToolbar
+    }
+    
+    @objc func endEdit(sender: UITextField!) {
+        if sender.tag == 0 {
+            redLabel.text = redTextField.text
+            redSlider.value = Float(redTextField.text ?? "") ?? 0.0
+        } else if sender.tag == 1 {
+            greenLabel.text = greenTextField.text
+            greenSlider.value = Float(greenTextField.text ?? "") ?? 0.0
+        } else {
+            blueLabel.text = blueTextField.text
+            blueSlider.value = Float(blueTextField.text ?? "") ?? 0.0
+        }
+        setColor()
     }
 }
