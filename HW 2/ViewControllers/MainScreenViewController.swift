@@ -47,10 +47,13 @@ class MainScreenViewController: UIViewController {
 
 extension MainScreenViewController: SettingsViewControllerDelegate {
     func setBackgroundColor(
-        redColorDelegateValue: CGFloat, greenColorDelegateValue: CGFloat, blueColorDelegateValue: CGFloat) {
-        self.mainRedColorValue = redColorDelegateValue
-        self.mainGreenColorValue = greenColorDelegateValue
-        self.mainBlueColorValue = blueColorDelegateValue
+        redColorDelegateValue: CGFloat,
+        greenColorDelegateValue: CGFloat,
+        blueColorDelegateValue: CGFloat
+    ) {
+        mainRedColorValue = redColorDelegateValue
+        mainGreenColorValue = greenColorDelegateValue
+        mainBlueColorValue = blueColorDelegateValue
         
         backgroundView.backgroundColor = UIColor(
             red: redColorDelegateValue,
