@@ -124,7 +124,7 @@ extension SettingsViewController: UITextFieldDelegate {
 }
 
 extension SettingsViewController {
-    func addDoneButton(in texField: UITextField) {
+    private func addDoneButton(in texField: UITextField) {
         let keyboardToolbar = UIToolbar(frame: CGRect(
                                             x: 0,
                                             y: 0,
@@ -150,7 +150,7 @@ extension SettingsViewController {
         texField.inputAccessoryView = keyboardToolbar
     }
     
-    @objc func endEdit(sender: UITextField!) {
+    @objc private func endEdit(sender: UITextField!) {
         if sender.tag == 0 {
             redLabel.text = redTextField.text
             redSlider.value = Float(redTextField.text ?? "") ?? 0.0
