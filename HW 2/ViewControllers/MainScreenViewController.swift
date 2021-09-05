@@ -9,22 +9,26 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate {
-    func setBackgroundColor(redSettings: CGFloat, greenSettings: CGFloat, blueSettings: CGFloat)
+    func setBackgroundColor(
+        redColorDelegateValue: CGFloat,
+        greenColorDelegateValue: CGFloat,
+        blueColorDelegateValue: CGFloat
+    )
 }
 
 class MainScreenViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
     
-    private var redSettings: CGFloat = 1
-    private var greenSettings: CGFloat = 1
-    private var blueSettings: CGFloat = 1
+    private var mainRedColorValue: CGFloat = 1
+    private var mainGreenColorValue: CGFloat = 1
+    private var mainBlueColorValue: CGFloat = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView.backgroundColor = UIColor(
-            red: redSettings,
-            green: greenSettings,
-            blue: blueSettings,
+            red: mainRedColorValue,
+            green: mainGreenColorValue,
+            blue: mainBlueColorValue,
             alpha: 1
         )
 
@@ -32,9 +36,9 @@ class MainScreenViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
-        settingsVC.redSliderEditValue = Float(redSettings)
-        settingsVC.greenSliderEditValue = Float(greenSettings)
-        settingsVC.blueSliderEditValue = Float(blueSettings)
+        settingsVC.redSliderValueContainer = Float(mainRedColorValue)
+        settingsVC.greenSliderValueContainer = Float(mainGreenColorValue)
+        settingsVC.blueSliderValueContainer = Float(mainBlueColorValue)
         settingsVC.delegate = self
         
     }
@@ -42,15 +46,16 @@ class MainScreenViewController: UIViewController {
 }
 
 extension MainScreenViewController: SettingsViewControllerDelegate {
-    func setBackgroundColor(redSettings: CGFloat, greenSettings: CGFloat, blueSettings: CGFloat) {
-        self.redSettings = redSettings
-        self.greenSettings = greenSettings
-        self.blueSettings = blueSettings
+    func setBackgroundColor(
+        redColorDelegateValue: CGFloat, greenColorDelegateValue: CGFloat, blueColorDelegateValue: CGFloat) {
+        self.mainRedColorValue = redColorDelegateValue
+        self.mainGreenColorValue = greenColorDelegateValue
+        self.mainBlueColorValue = blueColorDelegateValue
         
         backgroundView.backgroundColor = UIColor(
-            red: redSettings,
-            green: greenSettings,
-            blue: blueSettings,
+            red: redColorDelegateValue,
+            green: greenColorDelegateValue,
+            blue: blueColorDelegateValue,
             alpha: 1
         )
     }

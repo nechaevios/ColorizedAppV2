@@ -24,17 +24,17 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var greenTextField: UITextField!
     @IBOutlet weak var blueTextField: UITextField!
     
-    var redSliderEditValue: Float!
-    var greenSliderEditValue: Float!
-    var blueSliderEditValue: Float!
+    var redSliderValueContainer: Float!
+    var greenSliderValueContainer: Float!
+    var blueSliderValueContainer: Float!
     
     var delegate: SettingsViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        redSlider.value = redSliderEditValue
-        greenSlider.value = greenSliderEditValue
-        blueSlider.value = blueSliderEditValue
+        redSlider.value = redSliderValueContainer
+        greenSlider.value = greenSliderValueContainer
+        blueSlider.value = blueSliderValueContainer
         
         addDoneButton(in: redTextField)
         addDoneButton(in: greenTextField)
@@ -66,9 +66,9 @@ class SettingsViewController: UIViewController {
     
     @IBAction func saveButtonPressed() {
         delegate.setBackgroundColor(
-            redSettings: CGFloat(redSlider.value),
-            greenSettings: CGFloat(greenSlider.value),
-            blueSettings: CGFloat(blueSlider.value)
+            redColorDelegateValue: CGFloat(redSlider.value),
+            greenColorDelegateValue: CGFloat(greenSlider.value),
+            blueColorDelegateValue: CGFloat(blueSlider.value)
         )
         
         self.dismiss(animated: true)
@@ -123,20 +123,27 @@ extension SettingsViewController: UITextFieldDelegate {
     }
 }
 
-extension UITextField {
-
-}
-
 extension SettingsViewController {
-    
     func addDoneButton(in texField: UITextField) {
-        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        let keyboardToolbar = UIToolbar(frame: CGRect(
+                                            x: 0,
+                                            y: 0,
+                                            width: UIScreen.main.bounds.width,
+                                            height: 44))
         
         keyboardToolbar.sizeToFit()
         keyboardToolbar.barStyle = .default
         
-        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endEdit(sender: )))
+        let flexBarButton = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        let doneBarButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(endEdit(sender: ))
+        )
         
         doneBarButton.tag = texField.tag
         keyboardToolbar.items = [flexBarButton, doneBarButton]
@@ -147,13 +154,17 @@ extension SettingsViewController {
         if sender.tag == 0 {
             redLabel.text = redTextField.text
             redSlider.value = Float(redTextField.text ?? "") ?? 0.0
+            redTextField.endEditing(true)
         } else if sender.tag == 1 {
             greenLabel.text = greenTextField.text
             greenSlider.value = Float(greenTextField.text ?? "") ?? 0.0
+            greenTextField.endEditing(true)
         } else {
             blueLabel.text = blueTextField.text
             blueSlider.value = Float(blueTextField.text ?? "") ?? 0.0
+            blueTextField.endEditing(true)
         }
+        
         setColor()
     }
 }
