@@ -28,6 +28,8 @@ class SettingsViewController: UIViewController {
     var greenSliderEditValue: Float!
     var blueSliderEditValue: Float!
     
+    var delegate: SettingsViewControllerDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         redSlider.value = redSliderEditValue
@@ -60,6 +62,16 @@ class SettingsViewController: UIViewController {
             blueLabel.text = string(from: blueSlider)
             blueTextField.text = string(from: blueSlider)
         }
+    }
+    
+    @IBAction func saveButtonPressed() {
+        delegate.setBackgroundColor(
+            redSettings: CGFloat(redSlider.value),
+            greenSettings: CGFloat(greenSlider.value),
+            blueSettings: CGFloat(blueSlider.value)
+        )
+        
+        self.dismiss(animated: true)
     }
     
     private func setColor() {
