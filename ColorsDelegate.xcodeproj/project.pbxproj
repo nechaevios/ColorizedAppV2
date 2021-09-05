@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A86938C720D027C300E87976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86938C620D027C300E87976 /* AppDelegate.swift */; };
 		A86938C920D027C300E87976 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86938C820D027C300E87976 /* SettingsViewController.swift */; };
-		A86938CC20D027C300E87976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86938CA20D027C300E87976 /* Main.storyboard */; };
 		A86938CE20D027C400E87976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A86938CD20D027C400E87976 /* Assets.xcassets */; };
 		A86938D120D027C400E87976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86938CF20D027C400E87976 /* LaunchScreen.storyboard */; };
+		D84740CA26E5506800DF8328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86938C620D027C300E87976 /* AppDelegate.swift */; };
+		D84740CB26E5516000DF8328 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86938CA20D027C300E87976 /* Main.storyboard */; };
 		D882D02A26E526BB00735376 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D882D02926E526BB00735376 /* MainScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,7 +127,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = "Alexey Efimov";
+				ORGANIZATIONNAME = "Sergey Nechaev";
 				TargetAttributes = {
 					A86938C220D027C300E87976 = {
 						CreatedOnToolsVersion = 10.0;
@@ -136,7 +136,7 @@
 				};
 			};
 			buildConfigurationList = A86938BE20D027C300E87976 /* Build configuration list for PBXProject "ColorsDelegate" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -158,9 +158,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84740CB26E5516000DF8328 /* Main.storyboard in Resources */,
 				A86938D120D027C400E87976 /* LaunchScreen.storyboard in Resources */,
 				A86938CE20D027C400E87976 /* Assets.xcassets in Resources */,
-				A86938CC20D027C300E87976 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +171,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84740CA26E5506800DF8328 /* AppDelegate.swift in Sources */,
 				A86938C920D027C300E87976 /* SettingsViewController.swift in Sources */,
-				A86938C720D027C300E87976 /* AppDelegate.swift in Sources */,
 				D882D02A26E526BB00735376 /* MainScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +251,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = ColorsDelegate/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				ONLY_ACTIVE_ARCH = YES;
@@ -306,6 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = ColorsDelegate/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -321,7 +323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "HW 2/App/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ColorsDelegate/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "HW 2/App/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ColorsDelegate/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
