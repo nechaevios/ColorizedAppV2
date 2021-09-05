@@ -36,9 +36,9 @@ class SettingsViewController: UIViewController {
         greenSlider.value = greenSliderValueContainer
         blueSlider.value = blueSliderValueContainer
         
-        addDoneButton(in: redTextField)
-        addDoneButton(in: greenTextField)
-        addDoneButton(in: blueTextField)
+        addDoneButton(to: redTextField)
+        addDoneButton(to: greenTextField)
+        addDoneButton(to: blueTextField)
         
         colorView.layer.cornerRadius = 15
         
@@ -124,7 +124,7 @@ extension SettingsViewController: UITextFieldDelegate {
 }
 
 extension SettingsViewController {
-    private func addDoneButton(in texField: UITextField) {
+    private func addDoneButton(to texField: UITextField) {
         let keyboardToolbar = UIToolbar(frame: CGRect(
                                             x: 0,
                                             y: 0,
