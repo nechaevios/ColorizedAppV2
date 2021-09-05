@@ -17,6 +17,7 @@ protocol SettingsViewControllerDelegate {
 }
 
 class MainScreenViewController: UIViewController {
+    
     @IBOutlet weak var backgroundView: UIView!
     
     private var mainRedColorValue: CGFloat = 1
@@ -31,7 +32,6 @@ class MainScreenViewController: UIViewController {
             blue: mainBlueColorValue,
             alpha: 1
         )
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,9 +40,7 @@ class MainScreenViewController: UIViewController {
         settingsVC.greenSliderValueContainer = Float(mainGreenColorValue)
         settingsVC.blueSliderValueContainer = Float(mainBlueColorValue)
         settingsVC.delegate = self
-        
     }
-    
 }
 
 extension MainScreenViewController: SettingsViewControllerDelegate {
